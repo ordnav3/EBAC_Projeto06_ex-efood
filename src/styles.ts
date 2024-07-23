@@ -19,7 +19,7 @@ export const GlobalStyle = createGlobalStyle`
     background-color: ${cores.floralWhite};
   }
 
-  .container{
+  .myContainer{
     max-width: 1024px;
     width: 100%;
     margin: 0 auto;

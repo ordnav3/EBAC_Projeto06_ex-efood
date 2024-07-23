@@ -5,7 +5,7 @@ import logo from '../../assets/images/logo.png'
 
 const Hero = () => (
   <S.HeroContainer style={{ backgroundImage: `url(${vector})` }}>
-    <div className="container">
+    <div className="myContainer">
       <S.Logo src={logo} />
       <S.HeroText>
         Viva experiências gastronômicas no conforto da sua casa
