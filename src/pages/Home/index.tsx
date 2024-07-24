@@ -20,7 +20,7 @@ const restaurantes: Place[] = [
   {
     id: 2,
     title: 'La Dolce Vita Trattoria',
-    highlighted: true,
+    highlighted: false,
     type: 'Italiana',
     assessment: 4.6,
     description:
@@ -31,7 +31,7 @@ const restaurantes: Place[] = [
   {
     id: 3,
     title: 'La Dolce Vita Trattoria',
-    highlighted: true,
+    highlighted: false,
     type: 'Italiana',
     assessment: 4.6,
     description:
@@ -42,7 +42,7 @@ const restaurantes: Place[] = [
   {
     id: 4,
     title: 'La Dolce Vita Trattoria',
-    highlighted: true,
+    highlighted: false,
     type: 'Italiana',
     assessment: 4.6,
     description:
