@@ -19,7 +19,7 @@ const restaurantes: Place[] = [
   },
   {
     id: 2,
-    title: 'Hioki Sushi ',
+    title: 'La Dolce Vita Trattoria',
     highlighted: true,
     type: 'Italiana',
     assessment: 4.6,
@@ -30,7 +30,7 @@ const restaurantes: Place[] = [
   },
   {
     id: 3,
-    title: 'Hioki Sushi ',
+    title: 'La Dolce Vita Trattoria',
     highlighted: true,
     type: 'Italiana',
     assessment: 4.6,
@@ -41,7 +41,7 @@ const restaurantes: Place[] = [
   },
   {
     id: 4,
-    title: 'Hioki Sushi ',
+    title: 'La Dolce Vita Trattoria',
     highlighted: true,
     type: 'Italiana',
     assessment: 4.6,
