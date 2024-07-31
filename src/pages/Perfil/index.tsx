@@ -1,66 +1,38 @@
+import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
+
 import Header from '../../components/Header'
 import ListProduct from '../../components/ListProduct'
 import Presentation from '../../components/Presentation'
 
-import backImage from '../../assets/images/imagem_de_fundo.png'
-import pizza from '../../assets/images/pizza.png'
-import Product from '../../models/Product'
+import { Place } from '../Home'
 
-const produtos: Product[] = [
-  {
-    id: 1,
-    image: pizza,
-    name: 'Pizza Marguerita',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!'
-  },
-  {
-    id: 2,
-    image: pizza,
-    name: 'Pizza Marguerita',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!'
-  },
-  {
-    id: 3,
-    image: pizza,
-    name: 'Pizza Marguerita',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!'
-  },
-  {
-    id: 4,
-    image: pizza,
-    name: 'Pizza Marguerita',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!'
-  },
-  {
-    id: 5,
-    image: pizza,
-    name: 'Pizza Marguerita',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!'
-  },
-  {
-    id: 6,
-    image: pizza,
-    name: 'Pizza Marguerita',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!'
+const Perfil = () => {
+  const { id } = useParams()
+
+  const [place, setPlace] = useState<Place>()
+
+  useEffect(() => {
+    fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
+      .then((res) => res.json())
+      .then((res) => setPlace(res))
+  }, [id])
+
+  if (!place) {
+    return <h3>Carregando...</h3>
   }
-]
 
-const Perfil = () => (
-  <div>
-    <Header />
-    <Presentation
-      category="Italiana"
-      image={backImage}
-      name="La Dolce Vita Trattoria"
-    />
-    <ListProduct products={produtos} />
-  </div>
-)
+  return (
+    <div>
+      <Header />
+      <Presentation
+        category={place.tipo}
+        image={place.capa}
+        name={place.titulo}
+      />
+      <ListProduct menu={place.cardapio} />
+    </div>
+  )
+}
 
 export default Perfil

@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom'
 import * as S from './styles'
 
 import logo from '../../assets/images/logo.png'
-import instagram from '../../assets/images/instagram-round-svgrepo-com (1) 1.png'
-import facebook from '../../assets/images/facebook-round-svgrepo-com 1.png'
-import twitter from '../../assets/images/twitter-2-svgrepo-com 1.png'
+import instagram from '../../assets/images/instagram-round-svgrepo-com.png'
+import facebook from '../../assets/images/facebook-round-svgrepo-com.png'
+import twitter from '../../assets/images/twitter-2-svgrepo-com.png'
 
 const Footer = () => (
   <S.FooterContainer>

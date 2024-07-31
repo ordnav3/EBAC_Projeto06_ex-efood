@@ -1,5 +1,5 @@
+import { Place } from '../../pages/Home'
 import PlaceCard from '../PlaceCard'
-import Place from '../../models/Place'
 
 import * as S from './styles'
 
@@ -14,13 +14,12 @@ const ListPlace = ({ places }: Props) => (
         <PlaceCard
           key={place.id}
           id={place.id}
-          title={place.title}
-          highlighted={place.highlighted}
-          type={place.type}
-          assessment={place.assessment}
-          description={place.description}
-          image={place.image}
-          menu={place.menu}
+          title={place.titulo}
+          highlighted={place.destacado}
+          type={place.tipo}
+          assessment={place.avaliacao}
+          description={place.descricao}
+          image={place.capa}
         />
       ))}
     </S.List>

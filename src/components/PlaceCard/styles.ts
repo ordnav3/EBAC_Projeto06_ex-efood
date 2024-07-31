@@ -27,15 +27,17 @@ export const Infos = styled.div`
 `
 
 export const imageCard = styled.img`
-  max-width: 472px;
+  width: 472px;
   max-height: 217px;
   vertical-align: middle;
+  object-fit: cover;
 `
 
 export const InfosContainer = styled.div`
   border: solid 1px ${cores.salmon};
   border-top: none;
   padding: 8px;
+  height: 217px;
 `
 
 export const TitleContainer = styled.h3`

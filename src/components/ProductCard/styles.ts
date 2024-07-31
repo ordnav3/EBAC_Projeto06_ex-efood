@@ -6,11 +6,17 @@ export const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 100%;
-  min-height: 360px;
+  max-width: 320px;
+  min-height: 338px;
   color: ${cores.antiqueWhite};
   padding: 8px;
   margin-bottom: 32px;
+
+  img {
+    width: 304px;
+    height: 167px;
+    object-fit: cover;
+  }
 `
 
 export const Title = styled.h3`
@@ -35,4 +41,5 @@ export const Button = styled.button`
   align-self: flex-end;
   background-color: ${cores.antiqueWhite};
   color: ${cores.salmon};
+  cursor: pointer;
 `

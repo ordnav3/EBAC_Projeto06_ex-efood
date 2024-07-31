@@ -9,7 +9,6 @@ type Props = {
   assessment: number
   description: string
   image: string
-  menu: string[]
 }
 
 const PlaceCard = ({
@@ -40,7 +39,7 @@ const PlaceCard = ({
         </S.Nota>
       </S.TitleContainer>
       <S.TextContainer>{description}</S.TextContainer>
-      <S.BunttonPlace to={'/perfil'}>Saiba mais</S.BunttonPlace>
+      <S.BunttonPlace to={`/perfil/${id}`}>Saiba mais</S.BunttonPlace>
     </S.InfosContainer>
   </S.Card>
 )
