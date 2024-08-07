@@ -30,7 +30,7 @@ const Home = () => {
     fetch('https://fake-api-tau.vercel.app/api/efood/restaurantes')
       .then((res) => res.json())
       .then((res) => setPlaces(res))
-  })
+  }, [])
 
   return (
     <>
