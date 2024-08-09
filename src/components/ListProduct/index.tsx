@@ -1,50 +1,49 @@
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import ProductCard from '../ProductCard'
 
 import close from '../../assets/images/close.png'
 
 import * as S from './styles'
+import { add, open } from '../../store/reducers/cart'
+
+type Product = {
+  id: number
+  nome: string
+  descricao: string
+  foto: string
+  preco: number
+  porcao: string
+}
 
 type Props = {
-  menu: {
-    id: number
-    nome: string
-    descricao: string
-    foto: string
-    preco: number
-    porcao: string
-  }[]
+  menu: Product[]
+}
+
+export const formataPreco = (preco = 0) => {
+  return new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL'
+  }).format(preco)
 }
 
 const ListProduct = ({ menu }: Props) => {
-  const formataPreco = (preco = 0) => {
-    return new Intl.NumberFormat('pt-BR', {
-      style: 'currency',
-      currency: 'BRL'
-    }).format(preco)
-  }
+  const dispatch = useDispatch()
 
-  const [selectedProduct, setSelectedProduct] = useState<null | {
-    id: number
-    nome: string
-    descricao: string
-    foto: string
-    preco: number
-    porcao: string
-  }>(null)
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
+
+  const addToCart = () => {
+    if (selectedProduct) {
+      dispatch(add(selectedProduct))
+      dispatch(open())
+    }
+  }
 
   if (!menu) {
     return <h3>Carregando...</h3>
   }
 
-  const handleProductClick = (product: {
-    id: number
-    nome: string
-    descricao: string
-    foto: string
-    preco: number
-    porcao: string
-  }) => {
+  const handleProductClick = (product: Product) => {
     setSelectedProduct(product)
   }
 
@@ -69,17 +68,20 @@ const ListProduct = ({ menu }: Props) => {
           <S.ModalContent>
             <S.CloseButton
               src={close}
-              alt=""
+              alt="Fechar"
               onClick={() => setSelectedProduct(null)}
             />
-            <S.ModalImage src={selectedProduct.foto} alt="" />
+            <S.ModalImage
+              src={selectedProduct.foto}
+              alt={selectedProduct.nome}
+            />
             <S.ModalInfos>
               <h4>{selectedProduct.nome}</h4>
               <p>
                 {selectedProduct.descricao}
                 <span>Porção: {selectedProduct.porcao}</span>
               </p>
-              <S.AddCart>
+              <S.AddCart type="button" onClick={addToCart}>
                 Adicionar ao carrinho -{' '}
                 <span>{formataPreco(selectedProduct.preco)}</span>
               </S.AddCart>

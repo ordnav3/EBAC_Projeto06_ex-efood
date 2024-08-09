@@ -27,6 +27,7 @@ export const Modal = styled.div`
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.73);
+    cursor: pointer;
   }
 `
 

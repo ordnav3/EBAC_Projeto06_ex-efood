@@ -1,7 +1,6 @@
-import { useEffect, useState } from 'react'
-
 import Hero from '../../components/Hero'
 import ListPlace from '../../components/ListPlace'
+import { useGetPlacesQuery } from '../../services/api'
 
 export type Product = {
   id: number
@@ -24,20 +23,18 @@ export type Place = {
 }
 
 const Home = () => {
-  const [places, setPlaces] = useState<Place[]>([])
+  const { data: places } = useGetPlacesQuery()
 
-  useEffect(() => {
-    fetch('https://fake-api-tau.vercel.app/api/efood/restaurantes')
-      .then((res) => res.json())
-      .then((res) => setPlaces(res))
-  }, [])
+  if (places) {
+    return (
+      <>
+        <Hero />
+        <ListPlace places={places} />
+      </>
+    )
+  }
 
-  return (
-    <>
-      <Hero />
-      <ListPlace places={places} />
-    </>
-  )
+  return <h4>Carregando...</h4>
 }
 
 export default Home

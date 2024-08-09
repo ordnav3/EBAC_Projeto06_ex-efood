@@ -1,22 +1,16 @@
-import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 import Header from '../../components/Header'
 import ListProduct from '../../components/ListProduct'
 import Presentation from '../../components/Presentation'
 
-import { Place } from '../Home'
+import { useGetProductsQuery } from '../../services/api'
+import Cart from '../../components/Cart'
 
 const Perfil = () => {
   const { id } = useParams()
 
-  const [place, setPlace] = useState<Place>()
-
-  useEffect(() => {
-    fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
-      .then((res) => res.json())
-      .then((res) => setPlace(res))
-  }, [id])
+  const { data: place } = useGetProductsQuery(id!)
 
   if (!place) {
     return <h3>Carregando...</h3>
@@ -31,6 +25,7 @@ const Perfil = () => {
         name={place.titulo}
       />
       <ListProduct menu={place.cardapio} />
+      <Cart />
     </div>
   )
 }
