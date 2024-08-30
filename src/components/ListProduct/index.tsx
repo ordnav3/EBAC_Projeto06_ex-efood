@@ -6,6 +6,7 @@ import close from '../../assets/images/close.png'
 
 import * as S from './styles'
 import { add, open } from '../../store/reducers/cart'
+import { parseToBrl } from '../../utils'
 
 type Product = {
   id: number
@@ -18,13 +19,6 @@ type Product = {
 
 type Props = {
   menu: Product[]
-}
-
-export const formataPreco = (preco = 0) => {
-  return new Intl.NumberFormat('pt-BR', {
-    style: 'currency',
-    currency: 'BRL'
-  }).format(preco)
 }
 
 const ListProduct = ({ menu }: Props) => {
@@ -83,7 +77,7 @@ const ListProduct = ({ menu }: Props) => {
               </p>
               <S.AddCart type="button" onClick={addToCart}>
                 Adicionar ao carrinho -{' '}
-                <span>{formataPreco(selectedProduct.preco)}</span>
+                <span>{parseToBrl(selectedProduct.preco)}</span>
               </S.AddCart>
             </S.ModalInfos>
           </S.ModalContent>
