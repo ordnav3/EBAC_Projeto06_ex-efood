@@ -101,18 +101,27 @@ const Checkout = ({ setPayment }: { setPayment: (value: boolean) => void }) => {
   }
 
   const adresIsValid = () => {
-    const isValid =
-      !form.errors.fullName &&
-      !form.errors.adress &&
-      !form.errors.city &&
-      !form.errors.zipCode &&
-      !form.errors.houseNumber
+    form.setTouched({
+      fullName: true,
+      adress: true,
+      city: true,
+      zipCode: true,
+      houseNumber: true
+    })
 
-    if (isValid) {
-      setUserAdress(true)
-    } else {
-      alert('Complete os dados de entrega ')
-    }
+    form.validateForm().then((errors) => {
+      if (
+        !errors.fullName &&
+        !errors.adress &&
+        !errors.city &&
+        !errors.zipCode &&
+        !errors.houseNumber
+      ) {
+        setUserAdress(true)
+      } else {
+        alert('Complete os dados de entrega')
+      }
+    })
   }
 
   const checkInputHasError = (fieldName: string) => {
